@@ -14,7 +14,7 @@
       />
 
       <label for="email">Email: </label>
-      <input type="text" id="email" v-model="email" />
+      <input type="email" id="email" v-model="email" />
 
       <label for="gender">Gender: </label>
       <label for="male">
@@ -123,9 +123,12 @@ export default {
         this.rollNumber === "" ||
         this.email === "" ||
         this.gender === "" ||
-        this.hobbies === ""
+        this.hobbies === "" ||
+        this.marks.toString().length > 3 ||
+        this.marks > 100 ||
+        this.phoneNumber.toString().length !== 10
       ) {
-        alert("Please fill out every field!");
+        alert("Enter valid details!");
         return;
       }
 
@@ -138,6 +141,17 @@ export default {
         marks: this.marks,
         phoneNumber: this.phoneNumber,
       });
+
+      this.reset();
+    },
+    reset() {
+      this.name = "";
+      this.rollNumber = "";
+      this.email = "";
+      this.gender = "";
+      this.hobbies = null;
+      this.marks = "";
+      this.phoneNumber = "";
     },
     updateHobbies(event) {
       const hobbyValue = event.target.value;
@@ -175,7 +189,8 @@ export default {
 }
 
 .form-display input[type="text"],
-.form-display input[type="number"] {
+.form-display input[type="number"],
+.form-display input[type="email"] {
   width: 100%;
   padding: 8px;
   border: 1px solid #ccc;
@@ -188,21 +203,18 @@ export default {
   margin-right: 5px;
 }
 
-
 .form-display .submit-button {
   margin-top: 10px;
   padding: 10px 20px;
-  color: #4caf50;
-  background-color: white;
   border: 1px solid #4caf50;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  color: #4caf50;
+  background-color: white;
 }
 
 .form-display .submit-button:hover {
   background-color: #45a049;
   color: white;
 }
-
 </style>

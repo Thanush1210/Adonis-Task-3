@@ -19,6 +19,7 @@ export default {
       formData.id = Date.now();
       this.formDataSet.push(formData);
     },
+
     editFormData(formData) {
       this.selectedFormData = { ...formData };
     },
@@ -56,7 +57,7 @@ export default {
           <th>Hobbies</th>
           <th>Grade:</th>
           <th>Phone number</th>
-          <th>Update</th>
+          <th>Edit</th>
           <th>Delete</th>
         </tr>
         <tr v-for="formData in formDataSet" :key="formData.id">
@@ -67,7 +68,7 @@ export default {
           <td>{{ formData.hobbies }}</td>
           <td>{{ $filters.gradeFilter(formData.marks) }}</td>
           <td>{{ formData.phoneNumber }}</td>
-          <td><button @click="editFormData(formData)">Update</button></td>
+          <td><button @click="editFormData(formData)">Edit</button></td>
           <td><button @click="deleteFormData(formData)">❌</button></td>
         </tr>
       </table>

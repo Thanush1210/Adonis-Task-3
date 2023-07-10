@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import DisplayView from "./views/DisplayView.vue"
+import DisplayView from "./views/DisplayView.vue";
 </script>
 <template>
   <div>
-
     <DisplayView />
 
     <router-view />
