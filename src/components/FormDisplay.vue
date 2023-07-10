@@ -1,97 +1,104 @@
 <template>
-  <form class="form-display" @submit.prevent="onSubmit">
-    <label for="name">Name: </label>
-    <input type="text" id="name" v-model="name" />
-    <br />
+  <div class="form-container">
+    <form class="form-display" @submit.prevent="onSubmit">
+      <label for="name">Name: </label>
+      <input type="text" id="name" v-model="name" />
+      <br />
 
-    <label for="rollNumber">Roll Number: </label>
-    <input type="text" pattern="[A-Za-z0-9]+" id="roll-num" v-model="rollNumber" />
-
-    <label for="email">Email: </label>
-    <input type="text" id="email" v-model="email" />
-
-    <label for="gender">Gender: </label>
-    <label for="male">
+      <label for="rollNumber">Roll Number: </label>
       <input
-        type="radio"
-        id="male"
-        name="gender"
-        value="male"
-        v-model="gender"
-        required
+        type="text"
+        pattern="[A-Za-z0-9]+"
+        id="roll-num"
+        v-model="rollNumber"
       />
-      <img
-        src="./icons/icons8-male-50.png"
-        alt="male"
-        @click="gender = 'male'"
-      />
-    </label>
-    <label for="female">
-      <input
-        type="radio"
-        id="female"
-        name="gender"
-        value="female"
-        v-model="gender"
-        required
-      />
-      <img
-        src="./icons/icons8-female-48.png"
-        alt="female"
-        @click="gender = 'female'"
-      />
-    </label>
 
-    <label for="hobbies">Hobbies: </label>
-    <label for="reading">
-      <input
-        type="checkbox"
-        name="hobbies"
-        value="reading"
-        id="reading"
-        @click="updateHobbies"
-      />
-      Reading
-    </label>
-    <label for="running">
-      <input
-        type="checkbox"
-        name="hobbies"
-        value="running"
-        id="running"
-        @click="updateHobbies"
-      />
-      Running
-    </label>
-    <label for="travelling">
-      <input
-        type="checkbox"
-        name="hobbies"
-        value="travelling"
-        id="travelling"
-        @click="updateHobbies"
-      />
-      Travelling
-    </label>
-    <label for="playing">
-      <input
-        type="checkbox"
-        name="hobbies"
-        value="playing"
-        id="playing"
-        @click="updateHobbies"
-      />
-      Playing
-    </label>
+      <label for="email">Email: </label>
+      <input type="text" id="email" v-model="email" />
 
-    <label for="marks">Marks</label>
-    <input type="number" id="marks" v-model="marks">
+      <label for="gender">Gender: </label>
+      <label for="male">
+        <input
+          type="radio"
+          id="male"
+          name="gender"
+          value="male"
+          v-model="gender"
+          required
+        />
+        <img
+          src="./icons/icons8-male-50.png"
+          alt="male"
+          @click="gender = 'male'"
+        />
+      </label>
+      <label for="female">
+        <input
+          type="radio"
+          id="female"
+          name="gender"
+          value="female"
+          v-model="gender"
+          required
+        />
+        <img
+          src="./icons/icons8-female-48.png"
+          alt="female"
+          @click="gender = 'female'"
+        />
+      </label>
 
-    <label for="phoneNumber">Phone Number: </label>
-    <input type="number" id="phone-number" v-model="phoneNumber">
+      <label for="hobbies">Hobbies: </label>
+      <label for="reading">
+        <input
+          type="checkbox"
+          name="hobbies"
+          value="reading"
+          id="reading"
+          @click="updateHobbies"
+        />
+        Reading
+      </label>
+      <label for="running">
+        <input
+          type="checkbox"
+          name="hobbies"
+          value="running"
+          id="running"
+          @click="updateHobbies"
+        />
+        Running
+      </label>
+      <label for="travelling">
+        <input
+          type="checkbox"
+          name="hobbies"
+          value="travelling"
+          id="travelling"
+          @click="updateHobbies"
+        />
+        Travelling
+      </label>
+      <label for="playing">
+        <input
+          type="checkbox"
+          name="hobbies"
+          value="playing"
+          id="playing"
+          @click="updateHobbies"
+        />
+        Playing
+      </label>
 
-    <input type="submit" value="Submit" />
-  </form>
+      <label for="marks">Marks</label>
+      <input type="number" id="marks" v-model="marks" />
+
+      <label for="phoneNumber">Phone Number: </label>
+      <input type="number" id="phone-number" v-model="phoneNumber" />
+
+      <input type="submit" value="Submit" class="submit-button" />
+    </form>
+  </div>
 </template>
 
 <script>
@@ -102,10 +109,10 @@ export default {
       name: "",
       rollNumber: "",
       email: "",
-      gender: '',
+      gender: "",
       hobbies: [],
-      marks:'',
-      phoneNumber:null
+      marks: "",
+      phoneNumber: null,
     };
   },
 
@@ -122,15 +129,15 @@ export default {
         return;
       }
 
-      this.$emit('form-data',{
+      this.$emit("form-data", {
         name: this.name,
         rollNumber: this.rollNumber,
         email: this.email,
         gender: this.gender,
         hobbies: this.hobbies,
         marks: this.marks,
-        phoneNumber: this.phoneNumber
-      })
+        phoneNumber: this.phoneNumber,
+      });
     },
     updateHobbies(event) {
       const hobbyValue = event.target.value;
@@ -149,11 +156,53 @@ export default {
 </script>
 
 <style>
+.form-container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
 .form-display {
-  display: flex;
-  flex-direction: column;
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-#name , #roll-num , #email{
-    width: 50%;
+
+.form-display label {
+  display: block;
+  margin-bottom: 10px;
+  font-family: cursive;
 }
+
+.form-display input[type="text"],
+.form-display input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.form-display input[type="radio"],
+.form-display input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+
+.form-display .submit-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  color: #4caf50;
+  background-color: white;
+  border: 1px solid #4caf50;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-display .submit-button:hover {
+  background-color: #45a049;
+  color: white;
+}
+
 </style>
